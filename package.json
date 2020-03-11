@@ -1,5 +1,16 @@
 {
+  "name": "gitlab-monitor-bridge",
+  "version": "1.0.0",
+  "author": "Erik Hedenström",
+  "license": "MIT",
+  "scripts": {
+    "start": "functions-framework --port=5000 --target=relayToMQTT"
+  },
+  "private": true,
   "dependencies": {
-    "mqtt": "^2.18.8"
+    "mqtt": "^3.0.0"
+  },
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^1.5.0"
   }
 }

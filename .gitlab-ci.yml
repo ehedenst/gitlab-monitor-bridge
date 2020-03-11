@@ -1,0 +1,13 @@
+image: gcr.io/hedenstroem-docker/gitlab-builder-base
+
+stages:
+  - deploy
+
+deploy:
+  stage: build
+  only:
+    - master
+  script:
+    - vaultenv download secret/gitlab-ci/gcr-push.json ~/gcr-push.json
+    - gcloud auth activate-service-account --key-file ~/gcr-push.json
+    - gcloud functions deploy relayToMQTT --runtime nodejs10 --trigger-http
