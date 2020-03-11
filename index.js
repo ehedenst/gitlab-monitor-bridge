@@ -2,7 +2,6 @@ var mqtt = require('mqtt');
 
 var token = process.env.GITLAB_TOKEN || '';
 
-// TODO: parse these from query params
 var mqtt_url = process.env.MQTT_URL || 'mqtt://localhost:1883';
 var topic = process.env.MQTT_TOPIC || 'gitlab';
 
