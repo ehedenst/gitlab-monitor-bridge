@@ -1,13 +1,7 @@
-image: gcr.io/hedenstroem-docker/gitlab-builder-base
-
-stages:
-  - deploy
-
 deploy:
-  stage: deploy
+  image: gcr.io/cloud-builders/gcloud-slim
   only:
-    - master
+    - main
   script:
-    - vaultenv download secret/gitlab-ci/gcf-deploy@hedenstroem-gitlab.json gcf-deploy.json
-    - gcloud auth activate-service-account --key-file gcf-deploy.json
-    - gcloud functions deploy relayToMQTT --allow-unauthenticated --region=europe-west3 --memory=128MB --runtime=nodejs10 --trigger-http --set-env-vars=MQTT_URL=$MQTT_URL,GITLAB_TOKEN=$GITLAB_TOKEN
+    - gcloud auth activate-service-account --key-file $GCR_CREDENTIALS
+    - gcloud functions deploy relayToMQTT --allow-unauthenticated --region=europe-west3 --memory=128MB --runtime=nodejs16 --trigger-http --set-env-vars=MQTT_URL=$MQTT_URL,GITLAB_TOKEN=$GITLAB_TOKEN
