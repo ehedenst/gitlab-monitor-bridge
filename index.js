@@ -5,7 +5,7 @@ var token = process.env.GITLAB_TOKEN || '';
 var mqtt_url = process.env.MQTT_URL || 'mqtt://localhost:1883';
 var topic = process.env.MQTT_TOPIC || 'gcf/gitlab';
 
-exports.relayToMQTT = (req, res) => {
+exports.gitlabToMQTT = (req, res) => {
   if (req.get('X-Gitlab-Token') == token) {
     var client = mqtt.connect(mqtt_url);
     client.on('error', function (err) {

@@ -4,7 +4,7 @@
   "author": "Erik Hedenström",
   "license": "MIT",
   "scripts": {
-    "start": "env-cmd functions-framework --target=relayToMQTT"
+    "start": "env-cmd functions-framework --target=gitlabToMQTT"
   },
   "private": true,
   "dependencies": {

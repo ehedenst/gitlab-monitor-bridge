@@ -4,7 +4,7 @@ HTTP to MQTT bridge that uses gitlab system hooks to wake up gitlab monitor
 
 ## Deploying
 
-gcloud functions deploy relayToMQTT --runtime nodejs16 --trigger-http
+gcloud functions deploy gitlabToMQTT --runtime nodejs16 --trigger-http
 
 ## Testing
 
