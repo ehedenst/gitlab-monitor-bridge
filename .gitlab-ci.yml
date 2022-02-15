@@ -4,4 +4,4 @@ deploy:
     - main
   script:
     - gcloud auth activate-service-account --key-file $GCR_CREDENTIALS
-    - gcloud functions deploy relayToMQTT --allow-unauthenticated --region=europe-west3 --memory=128MB --runtime=nodejs16 --trigger-http --set-env-vars=MQTT_URL=$MQTT_URL,GITLAB_TOKEN=$GITLAB_TOKEN
+    - gcloud functions deploy relayToMQTT --allow-unauthenticated --region=europe-west3 --memory=128MB --runtime=nodejs16 --trigger-http --set-env-vars=MQTT_URL=$MQTT_URL,MQTT_TOPIC=$MQTT_TOPIC,GITLAB_TOKEN=$GITLAB_TOKEN

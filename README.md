@@ -4,10 +4,26 @@ HTTP to MQTT bridge that uses gitlab system hooks to wake up gitlab monitor
 
 ## Deploying
 
-gcloud functions deploy relayToMQTT --runtime nodejs10 --trigger-http
+gcloud functions deploy relayToMQTT --runtime nodejs16 --trigger-http
 
-## Testin
+## Testing
 
+Create .env file with GITLAB_TOKEN and MQTT_URL.
+
+```bash
+echo GITLAB_TOKEN=test > .env
+echop MQTT_URL=mqtts://username:password@sserver:port >> .env
+```
+
+Install deps and start the local server
+
+```bash
 npm install
-GITLAB_TOKEN=test CLOUDMQTT_URL=mqtts://username:password@sserver:port npm start
-curl -H "X-Gitlab-Token: test" http://localhost:5000
+npm start
+```
+
+Make a request to the server
+
+```bash
+curl -H "X-Gitlab-Token: test" http://localhost:8080
+```
